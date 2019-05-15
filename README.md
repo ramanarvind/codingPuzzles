@@ -1,5 +1,5 @@
 # codingPuzzles
-## LC 975: Off Even Jump
+## LC 975: Odd Even Jump
 https://leetcode.com/problems/odd-even-jump/
 Solution: LC975-OddEvenJump.cpp
 
