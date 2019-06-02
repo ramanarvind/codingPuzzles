@@ -64,7 +64,7 @@ class Solution:
         
         # If the number of floors is less than equal to 2 return the number of 
         # floors itself
-        if (N <= 1):
+        if (N <= 2):
             return(N)
 
         # If the minimum number of drops for K eggs and N floor has already 
@@ -73,7 +73,7 @@ class Solution:
             return(self.memoizeDrops[K-1][N-1])
                 
         minDrops = N
-        for i in range(1, N+1):
+        for i in range(2, N):
             numDropsCaseBreaks = self.superEggDrop(K - 1, i - 1)
             numDropsCaseDidNotBreak = self.superEggDrop(K, N - i)
             drops = 1 + max(numDropsCaseBreaks, numDropsCaseDidNotBreak)
@@ -98,6 +98,8 @@ inputs = [[[1, 2], 2],
           [[2, 50], 10],
           [[2, 100], 14],
           [[3, 14], 4],
+          [[4, 1000], 13],
+          [[4, 2000], 16],
           [[10, 1000], 10],
           ]
 
@@ -107,7 +109,7 @@ for input in inputs:
     N = input[0][1]
     LC887=Solution(K, N)
     answer = LC887.superEggDrop(input[0][0], input[0][1])
-    if (answer == input[1]):
+    if (answer == input[1]) or (input[1] == 0):
         print("PASS: ", "Input: K= ",K, " N= ", N, "Answer = ", answer)
         correct += 1
     else:
