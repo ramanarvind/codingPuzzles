@@ -60,15 +60,26 @@ public:
 
 int main()
 {
+	vector<vector<int>> intVec = {
 	// The sorted array should have 0 inversions
-	//vector<int> intVec = { 1, 2, 3, 4, 5 };
+		{ 1, 2, 3, 4, 5 }, {0},
 	// The array[2, 4, 1, 3, 5] has three inversions : (2, 1), (4, 1), and (4, 3).
-	//vector<int> intVec = { 2, 4, 1, 3, 5 };
+		{ 2, 4, 1, 3, 5 }, {3},
 	// The array[5, 4, 3, 2, 1] has ten inversions : every distinct pair forms an inversion.
-	vector<int> intVec = { 5, 4, 3, 2, 1 };
-	//vector<int> intVec = { 1, 5, 2, 3, 4 };
+		{ 5, 4, 3, 2, 1 }, {10},
+		{ 1, 5, 2, 3, 4 }, {3}
+	};
 	Solution sol;
 
-	cout << "Number of inversions: " << sol.numInversions(intVec, 0) << endl;
+	for (unsigned int i = 0; i < intVec.size(); i += 2) {
+		unsigned int answer = sol.numInversions(intVec[i], 0);
+		if (answer == intVec[i + 1][0]) {
+			cout << "Test case " << i/2 << " : PASSED" << endl;
+		}
+		else {
+			cout << "Test case " << i/2 << " : PASSED" << endl;
+			cout << "Number of inversions computed: " << answer << " Correct answer: " << intVec[i + 1][0] << endl;
+		}
+	}
 }
 
